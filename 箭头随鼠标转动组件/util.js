@@ -1,3 +1,25 @@
+if(!window.requestAnimationFrame){
+	winodw.requestAnimationFrame = (
+		window.webkitRequestAnimationFrame ||
+		window.mozRequestAnimationFrame ||
+		window.oRequestAnimationFrame ||
+		window.msRequestAnimationFrame ||
+		function(callback){
+			return window.setTimeout(callback, 1000/60);
+		}
+	);
+}
+
+if(!window.cancelAnimationFrame){
+	window.cancelAnimationFrame = (
+		window.cancelRequestAnimationFrame ||
+		window.webkitCancelAnimationFrame || window.webkitCancelRequestAnimationFrame ||
+		window.mozCancelAnimationFrame || window.mozCancelRequestAnimationFrame ||
+		window.oCancelAnimationFrame || window.oCancelRequestAnimationFrame ||
+		window.msCancelAnimationFrame || window.msCancelAnimationFrame ||
+		window.clearTimeout
+	);
+}
 window.util = {};
 
 window.util.captureMouse = function(element){
@@ -24,5 +46,5 @@ window.util.captureMouse = function(element){
 	},false);
 
 	return mouse;
-	
+
 }
